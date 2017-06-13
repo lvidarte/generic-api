@@ -14,4 +14,4 @@ def endpoint(name):
         return jsonify(data[name] if name in data else [])
 
 if __name__ == '__main__':
-    app.run(port=8080)
+    app.run(port=8080, host='0.0.0.0')

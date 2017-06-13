@@ -2,7 +2,7 @@
 
 ## Run with docker
 
-    docker run -d --name generic-api -p 8080 lvidarte/generic-api:latest
+    docker run -d --name generic-api -p 8080:8080 lvidarte/generic-api:latest
 
 ## Usage
 
