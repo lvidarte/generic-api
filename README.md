@@ -1,27 +1,72 @@
 # Generic API Docker Image - Alpine Linux based
 
+
 ## Run with docker
 
-    docker run -d --name generic-api -p 8080:8080 lvidarte/generic-api:latest
+    docker run -d --name generic-api -v `pwd`/db:/app/db -p 5000:5000 lvidarte/generic-api:latest
+
 
 ## Usage
 
-POST
 
-    $ curl -v http://127.0.0.1:8080/points -H 'application/json' -d '{"x":1, "y":2}'
+### POST
+
+    $ curl localhost:5000/points -d '{"x": 1, "y": 2}'
     {
-      "result": "ok"
+      "_id": "1", 
+      "x": 1, 
+      "y": 2
+    }
+
+<!-- -->
+
+    $ curl localhost:5000/points -d '{"x": 5, "y": 10}'
+    {
+      "_id": "2", 
+      "x": 5, 
+      "y": 10
     }
 
 
-GET
+### GET
 
-    $ curl -v http://127.0.0.1:8080/points
-    [
-      {
+    $ curl localhost:5000/points
+    {
+      "1": {
+        "_id": "1", 
         "x": 1, 
         "y": 2
+      }, 
+      "2": {
+        "_id": "2", 
+        "x": 5, 
+        "y": 10
       }
-    ]
+    }
+
+<!-- -->
+
+	$ curl localhost:5000/points/1
+	{
+	  "_id": "1", 
+	  "x": 1, 
+	  "y": 2
+	}
+
+<!-- -->
+
+	$ curl localhost:5000/points/1/x
+    1
+
+
+### DELETE
+
+	$ curl -XDELETE localhost:5000/points/1
+	{
+	  "_id": "1", 
+	  "x": 1, 
+	  "y": 2
+	}
+
 
 
