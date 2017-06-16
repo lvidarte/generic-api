@@ -18,7 +18,7 @@ import lookup
 app = Flask(__name__)
 app.config['SHELVE_WRITEBACK'] = True
 app.config['SHELVE_FILENAME'] = os.path.join(
-    os.path.dirname(os.path.abspath(__file__)), 'db'
+    os.path.dirname(os.path.abspath(__file__)), 'data/db'
 )
 shelve.init_app(app)
 
