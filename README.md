@@ -1,6 +1,6 @@
 # Generic API Docker Image - Alpine Linux based
 
-This is a generic api for development tests. You can create any endpoint and add json objects as you wish. The data is persisted on disk by `shelve`.
+This is a generic api for development tests. You can create any endpoint and add json objects as you wish. The data is persisted on disk by [shelve](https://docs.python.org/3.5/library/shelve.html).
 
 
 ### Run with docker
