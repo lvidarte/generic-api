@@ -10,6 +10,8 @@ This is a generic api for development tests. You can create any endpoint and add
 
 ### POST method
 
+The header `Content-Type: application/json` is not necessary, the api assume you are sending jsons.
+
     $ curl localhost:5000/points -d '{"x": 1, "y": 2}'
     {
       "_id": "1", 
