@@ -1,15 +1,14 @@
 # Generic API Docker Image - Alpine Linux based
 
+This is a generic api for development tests. You can create any endpoint and add json objects as you wish. The data is persisted on disk by `shelve`.
 
-## Run with docker
+
+### Run with docker
 
     docker run -d --name generic-api -v `pwd`/db:/app/db -p 5000:5000 lvidarte/generic-api:latest
 
 
-## Usage
-
-
-### POST
+### POST method
 
     $ curl localhost:5000/points -d '{"x": 1, "y": 2}'
     {
@@ -28,7 +27,7 @@
     }
 
 
-### GET
+### GET method
 
     $ curl localhost:5000/points
     {
@@ -59,7 +58,7 @@
     1
 
 
-### DELETE
+### DELETE method
 
 	$ curl -XDELETE localhost:5000/points/1
 	{
