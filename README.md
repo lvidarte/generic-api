@@ -7,6 +7,13 @@ This is a generic api for development tests. You can create any endpoint and add
 
     docker run -d --name generic-api -v `pwd`/db:/app/db -p 5000:5000 lvidarte/generic-api:latest
 
+**Logs**
+
+    $ docker logs -f generic-api 
+    172.17.0.1 - - [16/Jun/2017 04:50:56] "GET /points HTTP/1.1" 200 -
+    172.17.0.1 - - [16/Jun/2017 04:51:40] "POST /points HTTP/1.1" 201 -
+    172.17.0.1 - - [16/Jun/2017 04:51:55] "DELETE /points/1 HTTP/1.1" 404 -
+
 
 ### POST method
 
