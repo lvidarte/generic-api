@@ -83,6 +83,6 @@ def _is_dict(db):
     return type(db) in (dict, shelve.shelve.DbfilenameShelf)
 
 def _get_next_id(db):
-    keys = sorted(list(db.keys()))
-    return str(int(keys[-1]) + 1) if keys else '1'
+    keys = sorted([int(k) for k in db.keys()])
+    return str(keys[-1] + 1) if keys else '1'
 
