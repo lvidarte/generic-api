@@ -95,7 +95,7 @@ Create authors and books
 
 Get the full data
 
-	$ curl http://localhost:5000/authors/1
+	$ curl localhost:5000/authors/1
 	{
 	  "_id": "1", 
 	  "books": {
