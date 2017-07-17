@@ -86,11 +86,11 @@ Create authors and books
 	  "year": 1988
 	}
 
-	$ curl localhost:5000/authors/1/books -d '{"title": "Foundation and Earth", "year": 1986}'
+	$ curl localhost:5000/authors/1/books -d '{"title": "Foundation and Earth", "year": 1987}'
 	{
 	  "_id": "2", 
 	  "title": "Foundation and Earth", 
-	  "year": 1986
+	  "year": 1987
 	}
 
 Get the full data
@@ -107,11 +107,36 @@ Get the full data
 		"2": {
 		  "_id": "2", 
 		  "title": "Foundation and Earth", 
-		  "year": 1986
+		  "year": 1987
 		}
 	  }, 
 	  "name": "Asimov"
 	}
+
+You can get only some field
+
+	$ curl localhost:5000/authors/1/books/2/title
+	"Foundation and Earth"
+
+	$ curl localhost:5000/authors/1/books/2/year
+	1987
+
+And change any field as you wish
+
+	$ curl localhost:5000/authors/1/books/2/year -d '1986'
+	1986
+
+
+	$ curl localhost:5000/authors/1/books/2
+	{
+	  "_id": "2", 
+	  "title": "Foundation and Earth", 
+	  "year": 1986
+	}
+
+### PUT method
+
+There is not PUT method, use POST instead.
 
 ### Logs
 
