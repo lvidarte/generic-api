@@ -10,7 +10,7 @@ This is a generic api for development tests. You can create any endpoint and add
 
 ### POST method
 
-The header `Content-Type: application/json` is not necessary, the api assume you are sending jsons.
+The header `Content-Type: application/json` is not necessary, the api assumes you are sending jsons.
 
     $ curl localhost:5000/points -d '{"x": 1, "y": 2}'
     {
@@ -69,6 +69,49 @@ The header `Content-Type: application/json` is not necessary, the api assume you
 	  "y": 2
 	}
 
+### Nested example
+
+Create authors and books
+
+	$ curl localhost:5000/authors -d '{"name": "Asimov"}'
+	{
+	  "_id": "1", 
+	  "name": "Asimov"
+	}
+
+	$ curl localhost:5000/authors/1/books -d '{"title": "Nemesis", "year": 1988}'
+	{
+	  "_id": "1", 
+	  "title": "Nemesis", 
+	  "year": 1988
+	}
+
+	$ curl localhost:5000/authors/1/books -d '{"title": "Foundation and Earth", "year": 1986}'
+	{
+	  "_id": "2", 
+	  "title": "Foundation and Earth", 
+	  "year": 1986
+	}
+
+Get the full data
+
+	$ curl http://localhost:5000/authors/1
+	{
+	  "_id": "1", 
+	  "books": {
+		"1": {
+		  "_id": "1", 
+		  "title": "Nemesis", 
+		  "year": 1988
+		}, 
+		"2": {
+		  "_id": "2", 
+		  "title": "Foundation and Earth", 
+		  "year": 1986
+		}
+	  }, 
+	  "name": "Asimov"
+	}
 
 ### Logs
 
