@@ -47,92 +47,92 @@ The header `Content-Type: application/json` is not necessary, the api assumes yo
 
 <!-- -->
 
-	$ curl localhost:5000/points/1
-	{
-	  "_id": "1", 
-	  "x": 1, 
-	  "y": 2
-	}
+    $ curl localhost:5000/points/1
+    {
+      "_id": "1", 
+      "x": 1, 
+      "y": 2
+    }
 
 <!-- -->
 
-	$ curl localhost:5000/points/1/x
+    $ curl localhost:5000/points/1/x
     1
 
 
 ### DELETE method
 
-	$ curl -XDELETE localhost:5000/points/1
-	{
-	  "_id": "1", 
-	  "x": 1, 
-	  "y": 2
-	}
+    $ curl -XDELETE localhost:5000/points/1
+    {
+      "_id": "1", 
+      "x": 1, 
+      "y": 2
+    }
 
 ### Nested example
 
 Create authors and books
 
-	$ curl localhost:5000/authors -d '{"name": "Asimov"}'
-	{
-	  "_id": "1", 
-	  "name": "Asimov"
-	}
+    $ curl localhost:5000/authors -d '{"name": "Asimov"}'
+    {
+      "_id": "1", 
+      "name": "Asimov"
+    }
 
-	$ curl localhost:5000/authors/1/books -d '{"title": "Nemesis", "year": 1988}'
-	{
-	  "_id": "1", 
-	  "title": "Nemesis", 
-	  "year": 1988
-	}
+    $ curl localhost:5000/authors/1/books -d '{"title": "Nemesis", "year": 1988}'
+    {
+      "_id": "1", 
+      "title": "Nemesis", 
+      "year": 1988
+    }
 
-	$ curl localhost:5000/authors/1/books -d '{"title": "Foundation and Earth", "year": 1987}'
-	{
-	  "_id": "2", 
-	  "title": "Foundation and Earth", 
-	  "year": 1987
-	}
+    $ curl localhost:5000/authors/1/books -d '{"title": "Foundation and Earth", "year": 1987}'
+    {
+      "_id": "2", 
+      "title": "Foundation and Earth", 
+      "year": 1987
+    }
 
 Get the full data
 
-	$ curl localhost:5000/authors/1
-	{
-	  "_id": "1", 
-	  "books": {
-		"1": {
-		  "_id": "1", 
-		  "title": "Nemesis", 
-		  "year": 1988
-		}, 
-		"2": {
-		  "_id": "2", 
-		  "title": "Foundation and Earth", 
-		  "year": 1987
-		}
-	  }, 
-	  "name": "Asimov"
-	}
+    $ curl localhost:5000/authors/1
+    {
+      "_id": "1", 
+      "books": {
+        "1": {
+          "_id": "1", 
+          "title": "Nemesis", 
+          "year": 1988
+        }, 
+        "2": {
+          "_id": "2", 
+          "title": "Foundation and Earth", 
+          "year": 1987
+        }
+      }, 
+      "name": "Asimov"
+    }
 
 You can get only some field
 
-	$ curl localhost:5000/authors/1/books/2/title
-	"Foundation and Earth"
+    $ curl localhost:5000/authors/1/books/2/title
+    "Foundation and Earth"
 
-	$ curl localhost:5000/authors/1/books/2/year
-	1987
+    $ curl localhost:5000/authors/1/books/2/year
+    1987
 
 And change any field as you wish
 
-	$ curl localhost:5000/authors/1/books/2/year -d '1986'
-	1986
+    $ curl localhost:5000/authors/1/books/2/year -d '1986'
+    1986
 
 
-	$ curl localhost:5000/authors/1/books/2
-	{
-	  "_id": "2", 
-	  "title": "Foundation and Earth", 
-	  "year": 1986
-	}
+    $ curl localhost:5000/authors/1/books/2
+    {
+      "_id": "2", 
+      "title": "Foundation and Earth", 
+      "year": 1986
+    }
 
 ### PUT method
 
